@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Books - Book Catalog{% endblock %}
+
+{% block content %}
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+    <h1 style="margin: 0;">Books</h1>
+    <a class="btn" href="{% url 'book_create' %}" style="text-decoration: none;">Add Book</a>
+  </div>
+
+  <div style="height: 16px;"></div>
+
+  {% if books %}
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Published</th>
+          <th>ISBN</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.published_date|default:"" }}</td>
+            <td>{{ book.isbn|default:"" }}</td>
+            <td class="actions">
+              <a href="{% url 'book_update' book.pk %}">Edit</a>
+              <a href="{% url 'book_delete' book.pk %}">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No books yet. Create the first one.</p>
+  {% endif %}
+{% endblock %}
+

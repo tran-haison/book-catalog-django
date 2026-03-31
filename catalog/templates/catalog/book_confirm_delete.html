@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Book - Book Catalog{% endblock %}
+
+{% block content %}
+  <h1 style="margin-top: 0;">Delete Book</h1>
+
+  <p>Are you sure you want to delete the following book?</p>
+
+  <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 12px; border-radius: 8px;">
+    <p><strong>Title:</strong> {{ book.title }}</p>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Published:</strong> {{ book.published_date|default:"" }}</p>
+    <p><strong>ISBN:</strong> {{ book.isbn|default:"" }}</p>
+  </div>
+
+  <form method="post" style="margin-top: 16px;">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Confirm Delete</button>
+  </form>
+
+  <p style="margin-top: 12px;">
+    <a href="{% url 'book_list' %}">Cancel</a>
+  </p>
+{% endblock %}
+

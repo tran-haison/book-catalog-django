@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Book Catalog{% endblock %}</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: #111827;
+        color: #fff;
+        padding: 16px 20px;
+      }
+      main {
+        padding: 20px;
+      }
+      a {
+        color: #2563eb;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #e5e7eb;
+        padding: 10px 6px;
+        text-align: left;
+      }
+      .actions a {
+        margin-right: 10px;
+      }
+      .btn {
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      .btn-danger {
+        background: #dc2626;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Book Catalog</strong>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
+
