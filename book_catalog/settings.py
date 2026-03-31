@@ -29,9 +29,12 @@ if not SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "0").strip().lower() in {"1", "true", "yes", "on"}
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
+_allowed_hosts_raw = os.environ.get(
+    "DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,testserver"
+).strip()
+ALLOWED_HOSTS = [h.strip() for h in _allowed_hosts_raw.split(",") if h.strip()]
 
 
 # Application definition
